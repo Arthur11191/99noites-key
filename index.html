@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Key System 99 Noites</title>
+  <title>Scripter X - 99 Noites</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -24,7 +24,6 @@
       border-radius: 5px;
       display: inline-block;
       margin-top: 10px;
-      user-select: all;
     }
     button {
       padding: 10px 20px;
@@ -32,44 +31,27 @@
       margin-top: 20px;
       cursor: pointer;
     }
-    .erro {
-      color: red;
-      font-size: 18px;
-      margin-top: 30px;
-    }
   </style>
 </head>
 <body>
-  <div id="content" style="display:none;">
-    <h1>✅ Acesso validado via cookie!</h1>
-    <div class="msg">Copie a key abaixo</div>
-    <h2>99 Noites</h2>
-    <div class="key" id="keyText">X99noiteskeyX</div>
-    <br/>
-    <button onclick="copiarKey()">Copiar Key</button>
-  </div>
-
-  <div id="errorMsg" class="erro" style="display:none;">
-    ❌ Você não veio do site Link-Hub ou Linkvertise.
-  </div>
+  <h1>✅ Acesso validado via cookie!</h1>
+  <div class="msg">Copie a key abaixo</div>
+  <h2>Scripter X - 99 Noites</h2>
+  <div class="key" id="keyText">Keynova99NOITES</div>
+  <br/>
+  <button onclick="copiarKey()">Copiar Key</button>
 
   <script>
     const referersPermitidos = [
       "rekonise.com",
-      "linkvertise.com",
-      "link-target.net"
+      "direct-link.net"
     ];
 
-    const referer = document.referrer.toLowerCase();
-    const content = document.getElementById("content");
-    const errorMsg = document.getElementById("errorMsg");
-
+    const referer = document.referrer;
     const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link));
 
-    if (veioDeLinkPermitido) {
-      content.style.display = "block";
-    } else {
-      errorMsg.style.display = "block";
+    if (!veioDeLinkPermitido) {
+      document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio de um site autorizado (Rekonise ou Direct-Link).</h1>";
     }
 
     function copiarKey() {
