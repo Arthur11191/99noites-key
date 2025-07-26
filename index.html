@@ -19,6 +19,11 @@
       color: #fff;
       font-size: 18px;
       margin-top: 15px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .key-box.show {
+      opacity: 1;
     }
     .error {
       color: red;
@@ -26,6 +31,8 @@
     }
     .highlight {
       color: #00ff99;
+      font-size: 22px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -36,15 +43,91 @@
     const ref = document.referrer;
     const conteudo = document.getElementById("conteudo");
 
-    if (ref.includes("direct-link.net")) {
+    const linksPermitidos = [
+      "https://direct-link.net/1375182/9r4GocNXq4iv",
+      "https://rekonise.com/key-scripter-x-99-noites-af2h8"
+    ];
+
+    if (linksPermitidos.includes(ref)) {
       conteudo.innerHTML = `
-        <p>✅ Acesso validado via cookie! Copie a key abaixo:</p>
-        <p class="highlight">99 Noites</p>
-        <div class="key-box">NOVAKEY99NOITES</div>
+        <p>✅ Acesso validado via site autorizado!</p>
+        <p class="highlight">Carregando Key...</p>
+        <div class="key-box" id="key">NOVAKEY99NOITES</div>
       `;
+
+      setTimeout(() => {
+        document.getElementById("key").classList.add("show");
+      }, 5000);
     } else {
       conteudo.innerHTML = `
-        <p class="error">❌ Você não veio pelo site Linkvertise ou Link-Hub.</p>
+        <p class="error">❌ Você não veio pelo site autorizado (Link oficial).</p>
+      `;
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>99 Noites - Key de Acesso</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 20%;
+    }
+    .key-box {
+      background-color: #333;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 18px;
+      margin-top: 15px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .key-box.show {
+      opacity: 1;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    .highlight {
+      color: #00ff99;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="conteudo"></div>
+
+  <script>
+    const ref = document.referrer;
+    const conteudo = document.getElementById("conteudo");
+
+    const linksPermitidos = [
+      "https://direct-link.net/1375182/9r4GocNXq4iv",
+      "https://rekonise.com/key-scripter-x-99-noites-af2h8"
+    ];
+
+    if (linksPermitidos.includes(ref)) {
+      conteudo.innerHTML = `
+        <p>✅ Acesso validado via site autorizado!</p>
+        <p class="highlight">Carregando Key...</p>
+        <div class="key-box" id="key">NOVAKEY99NOITES</div>
+      `;
+
+      setTimeout(() => {
+        document.getElementById("key").classList.add("show");
+      }, 5000);
+    } else {
+      conteudo.innerHTML = `
+        <p class="error">❌ Você não veio pelo site autorizado (Link oficial).</p>
       `;
     }
   </script>
