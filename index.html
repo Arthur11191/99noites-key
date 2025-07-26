@@ -43,25 +43,14 @@
   </div>
 
   <div id="erro" style="display: none; color: red; font-size: 20px;">
-    ❌ Você não veio do site Link-Hub ou Linkvertise.
+    ❌ Acesso negado. Você não veio do link autorizado.
   </div>
 
   <script>
-    const referer = document.referrer;
-    const permitidos = [
-      "https://rekonise.com/key-scripter-x-99-noites-af2h8",
-      "https://direct-link.net/1375182/9r4GocNXq4iv"
-    ];
+    const urlParams = new URLSearchParams(window.location.search);
+    const acesso = urlParams.get('access');
 
-    let liberado = false;
-    for (const site of permitidos) {
-      if (referer.startsWith(site)) {
-        liberado = true;
-        break;
-      }
-    }
-
-    if (liberado) {
+    if (acesso === "ok") {
       document.getElementById("conteudo").style.display = "block";
     } else {
       document.getElementById("erro").style.display = "block";
