@@ -2,39 +2,77 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Key do Script 99 Noites</title>
+  <title>Key - 99 Noites</title>
   <style>
     body {
-      background-color: #0e0e0e;
-      color: white;
+      background-color: #111;
+      color: #fff;
       font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 12px;
       text-align: center;
-      padding-top: 80px;
+      box-shadow: 0 0 10px #000;
     }
-    .key-box {
-      background: #1c1c1c;
-      border: 2px solid #4caf50;
-      padding: 20px;
-      display: inline-block;
-      border-radius: 10px;
-      font-size: 20px;
+    .key {
+      font-size: 22px;
+      font-weight: bold;
+      color: #00ff88;
+      margin-bottom: 10px;
     }
-    button {
-      margin-top: 20px;
-      padding: 10px 25px;
-      font-size: 16px;
-      background-color: #4caf50;
+    .btn {
+      background-color: #00ff88;
       border: none;
-      border-radius: 5px;
-      color: white;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
       cursor: pointer;
+      color: #000;
     }
-    button:hover {
-      background-color: #45a049;
+    .error {
+      color: red;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <div class="box">
+    <div id="keybox" class="key" style="display: none;">Keynova99Noites</div>
+    <button class="btn" onclick="copyKey()" id="copyBtn" style="display: none;">Copiar Key</button>
+    <div class="error" id="error" style="display: none;">❌ Você não veio de um site autorizado.</div>
+  </div>
 
-  <div id="conteudo" style="display: none;">
-    <h1>🔑 Sua Key do
+  <script>
+    // LINKS PERMITIDOS:
+    const referersPermitidos = [
+      "rekonise.com",
+      "linkvertise.com",
+      "link-target.net"
+    ];
+
+    const referer = document.referrer;
+    const erro = document.getElementById("erro");
+    const conteudo = document.body;
+
+    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link));
+
+    if (!veioDeLinkPermitido) {
+      document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio do site Link-Hub ou Linkvertise.</h1>";
+    }
+
+    function copiarKey() {
+      const key = document.getElementById("keyText").textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        alert("✅ Key copiada com sucesso!");
+      });
+    }
+  </script>
+</body>
+</html>
