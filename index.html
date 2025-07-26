@@ -42,4 +42,40 @@
     <button onclick="copiarKey()">📋 Copiar Key</button>
   </div>
 
-  <div id="erro" style="display: none;
+  <div id="erro" style="display: none; color: red; font-size: 20px;">
+    ❌ Você não veio do site Link-Hub ou Linkvertise.
+  </div>
+
+  <script>
+    const referer = document.referrer;
+    const permitidos = [
+      "https://rekonise.com/key-scripter-x-99-noites-af2h8",
+      "https://direct-link.net/1375182/9r4GocNXq4iv"
+    ];
+
+    let liberado = false;
+    for (const site of permitidos) {
+      if (referer.startsWith(site)) {
+        liberado = true;
+        break;
+      }
+    }
+
+    if (liberado) {
+      document.getElementById("conteudo").style.display = "block";
+    } else {
+      document.getElementById("erro").style.display = "block";
+    }
+
+    function copiarKey() {
+      const keyText = document.getElementById("key").textContent;
+      navigator.clipboard.writeText(keyText).then(() => {
+        alert("Key copiada com sucesso!");
+      }).catch(() => {
+        alert("Erro ao copiar. Copie manualmente.");
+      });
+    }
+  </script>
+
+</body>
+</html>
