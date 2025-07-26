@@ -37,16 +37,15 @@
   <audio id="audioValidado" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="></audio>
 
   <script>
+    // LINKS PERMITIDOS:
     const referersPermitidos = [
       "rekonise.com",
       "linkvertise.com",
       "link-target.net"
     ];
 
-    const referer = document.referrer;
-    const conteudo = document.getElementById("conteudo");
-
-    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link));
+    const referer = document.referrer || "";
+    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link)) || referer === "";
 
     if (!veioDeLinkPermitido) {
       document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio do site Link-Hub ou Linkvertise.</h1>";
