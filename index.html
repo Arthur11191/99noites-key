@@ -10,6 +10,9 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 20%;
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
     }
     .key-box {
       background-color: #333;
@@ -20,46 +23,59 @@
       font-size: 18px;
       margin-top: 15px;
       display: none; /* escondida inicialmente */
+      word-break: break-word;
     }
     #validando {
       font-size: 20px;
+    }
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #009966cc; /* verde mais suave e transparente */
+      font-size: 14px;
+      font-family: monospace, monospace;
+      user-select: none;
     }
   </style>
 </head>
 <body>
   <div id="conteudo">
-    <h1>✅ Acesso validado via site autorizado!</h1>
+    <h1>✅ Acesso validado!</h1>
     <p id="validando">Validando acesso...</p>
     <div class="key-box" id="keyText">NOVAKEY99NOITES</div>
   </div>
+
+  <footer>
+    key: keynew99noites0
+  </footer>
 
   <!-- Som curto de "validado" (beep) embutido -->
   <audio id="audioValidado" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="></audio>
 
   <script>
-    // LINKS PERMITIDOS:
-    const referersPermitidos = [
-      "rekonise.com",
-      "linkvertise.com",
-      "link-target.net"
-    ];
-
-    const referer = document.referrer || "";
-    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link)) || referer === "";
-
-    if (!veioDeLinkPermitido) {
-      document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio do site Link-Hub ou Linkvertise.</h1>";
-    } else {
-      // Espera 2 segundos antes de mostrar a key e tocar som
-      setTimeout(() => {
-        document.getElementById("validando").style.display = "none";
-        const keyBox = document.getElementById("keyText");
-        keyBox.style.display = "inline-block";
-
-        const audio = document.getElementById("audioValidado");
-        audio.play();
-      }, 2000);
+    function getParameterByName(name) {
+      const url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+      const results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
+
+    const keyParam = getParameterByName('key') || 'NOVAKEY99NOITES';
+
+    setTimeout(() => {
+      document.getElementById('validando').style.display = 'none';
+      const keyBox = document.getElementById('keyText');
+      keyBox.textContent = keyParam;
+      keyBox.style.display = 'inline-block';
+
+      const audio = document.getElementById('audioValidado');
+      audio.play();
+    }, 2000);
   </script>
 </body>
 </html>
