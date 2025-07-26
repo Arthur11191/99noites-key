@@ -2,74 +2,39 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Key - 99 Noites</title>
+  <title>Key do Script 99 Noites</title>
   <style>
     body {
-      background-color: #111;
-      color: #fff;
+      background-color: #0e0e0e;
+      color: white;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .box {
-      background: #1f1f1f;
-      padding: 30px;
-      border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 10px #000;
+      padding-top: 80px;
     }
-    .key {
-      font-size: 22px;
-      font-weight: bold;
-      color: #00ff88;
-      margin-bottom: 10px;
+    .key-box {
+      background: #1c1c1c;
+      border: 2px solid #4caf50;
+      padding: 20px;
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 20px;
     }
-    .btn {
-      background-color: #00ff88;
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #4caf50;
       border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      border-radius: 8px;
+      border-radius: 5px;
+      color: white;
       cursor: pointer;
-      color: #000;
     }
-    .error {
-      color: red;
-      font-weight: bold;
+    button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <div id="keybox" class="key" style="display: none;">Keynova99Noites</div>
-    <button class="btn" onclick="copyKey()" id="copyBtn" style="display: none;">Copiar Key</button>
-    <div class="error" id="error" style="display: none;">❌ Você não veio de um site autorizado.</div>
-  </div>
 
-  <script>
-    const referer = document.referrer;
-    const allowedSites = [
-      "https://rekonise.com/key-scripter-x-99-noites-af2h8",
-      "https://direct-link.net/1375182/9r4GocNXq4iv"
-    ];
-
-    const isValid = allowedSites.some(site => referer.startsWith(site));
-
-    if (isValid) {
-      document.getElementById("keybox").style.display = "block";
-      document.getElementById("copyBtn").style.display = "inline-block";
-    } else {
-      document.getElementById("error").style.display = "block";
-    }
-
-    function copyKey() {
-      navigator.clipboard.writeText("Keynova99Noites").then(() => {
-        alert("✅ Key copiada!");
-      });
-    }
-  </script>
-</body>
-</html>
+  <div id="conteudo" style="display: none;">
+    <h1>🔑 Sua Key do
