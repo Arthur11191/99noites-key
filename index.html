@@ -2,76 +2,50 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Key - 99 Noites</title>
+  <title>99 Noites - Key de Acesso</title>
   <style>
     body {
-      background-color: #111;
-      color: #fff;
+      background-color: #0d0d0d;
+      color: #00ff99;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .box {
-      background: #1f1f1f;
-      padding: 30px;
-      border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 10px #000;
+      padding-top: 20%;
     }
-    .key {
-      font-size: 22px;
-      font-weight: bold;
-      color: #00ff88;
-      margin-bottom: 10px;
-    }
-    .btn {
-      background-color: #00ff88;
-      border: none;
+    .key-box {
+      background-color: #333;
+      display: inline-block;
       padding: 10px 20px;
-      font-weight: bold;
       border-radius: 8px;
-      cursor: pointer;
-      color: #000;
+      color: #fff;
+      font-size: 18px;
+      margin-top: 15px;
     }
     .error {
       color: red;
       font-weight: bold;
     }
+    .highlight {
+      color: #00ff99;
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <div id="keybox" class="key" style="display: none;">Keynova99Noites</div>
-    <button class="btn" onclick="copyKey()" id="copyBtn" style="display: none;">Copiar Key</button>
-    <div class="error" id="error" style="display: none;">❌ Você não veio de um site autorizado.</div>
-  </div>
+  <div id="conteudo"></div>
 
   <script>
-    // LINKS PERMITIDOS:
-    const referersPermitidos = [
-      "rekonise.com",
-      "linkvertise.com",
-      "link-target.net"
-    ];
+    const ref = document.referrer;
+    const conteudo = document.getElementById("conteudo");
 
-    const referer = document.referrer;
-    const erro = document.getElementById("erro");
-    const conteudo = document.body;
-
-    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link));
-
-    if (!veioDeLinkPermitido) {
-      document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio do site Link-Hub ou Linkvertise.</h1>";
-    }
-
-    function copiarKey() {
-      const key = document.getElementById("keyText").textContent;
-      navigator.clipboard.writeText(key).then(() => {
-        alert("✅ Key copiada com sucesso!");
-      });
+    if (ref.includes("direct-link.net")) {
+      conteudo.innerHTML = `
+        <p>✅ Acesso validado via cookie! Copie a key abaixo:</p>
+        <p class="highlight">99 Noites</p>
+        <div class="key-box">NOVAKEY99NOITES</div>
+      `;
+    } else {
+      conteudo.innerHTML = `
+        <p class="error">❌ Você não veio pelo site Linkvertise ou Link-Hub.</p>
+      `;
     }
   </script>
 </body>
