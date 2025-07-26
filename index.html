@@ -36,22 +36,10 @@
 </head>
 <body>
 
-  <h1>🔑 Sua Key do Script 99 Noites:</h1>
+  <div id="conteudo" style="display: none;">
+    <h1>🔑 Sua Key do Script 99 Noites:</h1>
+    <div class="key-box" id="key">Keynova99Noites</div><br>
+    <button onclick="copiarKey()">📋 Copiar Key</button>
+  </div>
 
-  <div class="key-box" id="key">Keynova99Noites</div><br>
-
-  <button onclick="copiarKey()">📋 Copiar Key</button>
-
-  <script>
-    function copiarKey() {
-      const keyText = document.getElementById("key").textContent;
-      navigator.clipboard.writeText(keyText).then(() => {
-        alert("Key copiada com sucesso!");
-      }).catch(() => {
-        alert("Erro ao copiar. Copie manualmente.");
-      });
-    }
-  </script>
-
-</body>
-</html>
+  <div id="erro" style="display: none;
