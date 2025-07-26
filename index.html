@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>99 Noites - Key de Acesso</title>
   <style>
     body {
@@ -19,116 +19,47 @@
       color: #fff;
       font-size: 18px;
       margin-top: 15px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
+      display: none; /* escondida inicialmente */
     }
-    .key-box.show {
-      opacity: 1;
-    }
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-    .highlight {
-      color: #00ff99;
-      font-size: 22px;
-      font-weight: bold;
+    #validando {
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="conteudo"></div>
+  <div id="conteudo">
+    <h1>✅ Acesso validado via site autorizado!</h1>
+    <p id="validando">Validando acesso...</p>
+    <div class="key-box" id="keyText">NOVAKEY99NOITES</div>
+  </div>
+
+  <!-- Som curto de "validado" (beep) embutido -->
+  <audio id="audioValidado" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="></audio>
 
   <script>
-    const ref = document.referrer;
-    const conteudo = document.getElementById("conteudo");
-
-    const linksPermitidos = [
-      "https://direct-link.net/1375182/9r4GocNXq4iv",
-      "https://rekonise.com/key-scripter-x-99-noites-af2h8"
+    const referersPermitidos = [
+      "rekonise.com",
+      "linkvertise.com",
+      "link-target.net"
     ];
 
-    if (linksPermitidos.includes(ref)) {
-      conteudo.innerHTML = `
-        <p>✅ Acesso validado via site autorizado!</p>
-        <p class="highlight">Carregando Key...</p>
-        <div class="key-box" id="key">NOVAKEY99NOITES</div>
-      `;
-
-      setTimeout(() => {
-        document.getElementById("key").classList.add("show");
-      }, 5000);
-    } else {
-      conteudo.innerHTML = `
-        <p class="error">❌ Você não veio pelo site autorizado (Link oficial).</p>
-      `;
-    }
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>99 Noites - Key de Acesso</title>
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 20%;
-    }
-    .key-box {
-      background-color: #333;
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 18px;
-      margin-top: 15px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    .key-box.show {
-      opacity: 1;
-    }
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-    .highlight {
-      color: #00ff99;
-      font-size: 22px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div id="conteudo"></div>
-
-  <script>
-    const ref = document.referrer;
+    const referer = document.referrer;
     const conteudo = document.getElementById("conteudo");
 
-    const linksPermitidos = [
-      "https://direct-link.net/1375182/9r4GocNXq4iv",
-      "https://rekonise.com/key-scripter-x-99-noites-af2h8"
-    ];
+    const veioDeLinkPermitido = referersPermitidos.some(link => referer.includes(link));
 
-    if (linksPermitidos.includes(ref)) {
-      conteudo.innerHTML = `
-        <p>✅ Acesso validado via site autorizado!</p>
-        <p class="highlight">Carregando Key...</p>
-        <div class="key-box" id="key">NOVAKEY99NOITES</div>
-      `;
-
-      setTimeout(() => {
-        document.getElementById("key").classList.add("show");
-      }, 5000);
+    if (!veioDeLinkPermitido) {
+      document.body.innerHTML = "<h1 style='color:red'>❌ Você não veio do site Link-Hub ou Linkvertise.</h1>";
     } else {
-      conteudo.innerHTML = `
-        <p class="error">❌ Você não veio pelo site autorizado (Link oficial).</p>
-      `;
+      // Espera 2 segundos antes de mostrar a key e tocar som
+      setTimeout(() => {
+        document.getElementById("validando").style.display = "none";
+        const keyBox = document.getElementById("keyText");
+        keyBox.style.display = "inline-block";
+
+        const audio = document.getElementById("audioValidado");
+        audio.play();
+      }, 2000);
     }
   </script>
 </body>
